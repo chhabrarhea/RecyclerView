@@ -43,7 +43,7 @@ private ArrayList<example_item> example_items;
     }
     private void parseJSON()
     {
-        String url="https://pixabay.com/api/?key=16872995-43f6560afc8c92c2b8458adb0&q=yellow+flowers&image_type=photo&pretty=true";
+        String url="https://pixabay.com/api/?key=""&q=yellow+flowers&image_type=photo&pretty=true";
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
