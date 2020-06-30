@@ -1,9 +1,9 @@
-public class MySingleton {
+public class MySingleton extends Application{
     private static MySingleton instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
     private static Context ctx;
-
+     public static final String TAG=MySingleton.class.getSimpleName();
     private MySingleton(Context context) {
         ctx = context;
         requestQueue = getRequestQueue();
@@ -44,8 +44,18 @@ public class MySingleton {
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
+    
+       public <T> void addToRequestQueue(Request<T> req,String tag) {
+            req.setTag(tag);
+            getRequestQueue().add(req);
+        }
 
     public ImageLoader getImageLoader() {
         return imageLoader;
+    }
+    public void cancelPendingRequests(Object tag)
+    {
+        if(requestQueue!=null)
+            requestQueue.cancelAll(tag);
     }
 }
